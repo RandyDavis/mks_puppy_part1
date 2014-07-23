@@ -1,4 +1,4 @@
-require_relative '../puppy-breeder.rb'
+require_relative '../lib/puppy-breeder.rb'
 require 'pry-byebug'
 
 describe Puppy do
