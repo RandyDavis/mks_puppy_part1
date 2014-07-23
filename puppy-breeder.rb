@@ -20,6 +20,7 @@ class Request
 
   def approve!
     @approve = true
+    PuppyContainer.remove_a_puppy
   end
 
   def approved?
@@ -47,6 +48,10 @@ class PuppyContainer
 
   def self.show_puppies_by_breed(breed)
     @container[breed][:list]
+  end
+
+  def self.remove_a_puppy(breed)
+    @container[breed][:list].shift
   end
 
   def self.my_puppies
