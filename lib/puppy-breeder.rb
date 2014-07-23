@@ -1,4 +1,4 @@
-module PuppyMill
+module TheMill
 end
 
 require_relative 'puppy-breeder/puppy.rb'
