@@ -4,16 +4,31 @@ module TheMill
   
     def initialize(breed)
       @breed = breed
-      @approve = false
+      @status = :pending
+    end
+
+    def activate!
+      @status = :pending
+    end
+
+    def pending?
+      @status == :pending
     end
   
-    def approve!
-      @approve = true
-      PuppyContainer.remove_a_puppy
+    def accept!
+      @status = :accepted
     end
-  
-    def approved?
-      @approve
+
+    def accepted?
+      @status == :accepted
+    end
+
+    def hold!
+      @status = :on_hold
+    end
+
+    def on_hold?
+      @status == :on_hold
     end
   end
 end

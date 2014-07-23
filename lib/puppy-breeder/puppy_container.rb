@@ -4,6 +4,12 @@ module TheMill
   
     def self.add_puppy(puppy)
       return "no such breed: '#{puppy.breed}'" if @container[puppy.breed].nil?
+
+      if @container[puppy.breed][:list].empty?
+        on_hold_requests = TheMill::RequestLog.log.select { |r| r.breed == puppy.breed }
+        on_hold_requests.each { |r| r.activate! }
+      end
+
       @container[puppy.breed][:list] << puppy
     end
   
@@ -21,11 +27,11 @@ module TheMill
       @container[breed][:list]
     end
   
-    def self.remove_a_puppy(breed)
-      @container[breed][:list].shift
-    end
+#    def self.remove_a_puppy(breed)
+#      @container[breed][:list].shift
+#    end
   
-    def self.my_puppies
+    def self.log
       @container
     end
   end
